@@ -63,13 +63,13 @@ RTEXT = ["I've started...",
 async def lunaQuery(query: str, user_id: int):
     query = (
         query
-        if LANGUAGE == "ml"
-        else (await arq.translate(query, "ml")).result.translatedText
+        if LANGUAGE == "en"
+        else (await arq.translate(query, "en")).result.translatedText
     )
     resp = (await arq.luna(query, user_id)).result
     return (
         resp
-        if LANGUAGE == "ml"
+        if LANGUAGE == "en"
         else (
             await arq.translate(resp, LANGUAGE)
         ).result.translatedText
